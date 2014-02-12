@@ -170,8 +170,7 @@ public class Backend {
 		if(BackendType.equals(Backends.MySQL))
 		{
 			String vaultText = StringConvertion.stringToNumeric(vault.toString());
-			sqlToExecute.add("DELETE FROM " + Config.getConfig().getString("backend.mysql.table") + " WHERE Player='" + vault.owner + "' AND InventoryID='" + vault.id + "'");
-			sqlToExecute.add("INSERT INTO " + Config.getConfig().getString("backend.mysql.table") + " (Player, InventoryID, Inventory) VALUES('" + vault.owner + "', '" + vault.id + "', '" + vaultText + "')");
+			sqlToExecute.add("UPDATE " + Config.getConfig().getString("backend.mysql.table") + " set Inventory = '" + vaultText + "' where Player = '" + vault.owner + "' and InventoryID = '" + vault.id + "'");
 		}
 		else
 		{
