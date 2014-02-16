@@ -94,7 +94,7 @@ public class Backend {
 	        		String[] clone = sqlToExecute.toArray(new String[0]);
 	        		for (String sql : clone)
 	        		{
-	        			sqlConnection.executeUpdate(sql);
+						sqlConnection.executeUpdate(sql);
 	        		}
 	        		sqlToExecute.clear();
 	        	}
@@ -170,7 +170,7 @@ public class Backend {
 		if(BackendType.equals(Backends.MySQL))
 		{
 			String vaultText = StringConvertion.stringToNumeric(vault.toString());
-			sqlToExecute.add("UPDATE " + Config.getConfig().getString("backend.mysql.table") + " set Inventory = '" + vaultText + "' where Player = '" + vault.owner + "' and InventoryID = '" + vault.id + "'");
+			sqlToExecute.add("INSERT INTO " + Config.getConfig().getString("backend.mysql.table") + " (Player, InventoryID, Inventory) VALUES ('" + vault.owner + "', '" + vault.id + "', '" + vaultText + "') ON DUPLICATE KEY UPDATE Inventory = '" + vaultText + "' ");
 		}
 		else
 		{

@@ -44,6 +44,7 @@ public class MySQL {
         try {
         	stmt.executeUpdate(s);
         } catch (SQLException e) {
+        	System.out.print(s);
             e.printStackTrace();
         }
     }
