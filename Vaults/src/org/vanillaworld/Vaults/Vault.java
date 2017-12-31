@@ -24,7 +24,7 @@ public class Vault {
 		{
 			this.rows = 3;
 		}
-		this.inv = Bukkit.getServer().createInventory(null, this.rows * 9, "Vault #" + id);
+		this.inv = Bukkit.getServer().createInventory(null, this.rows * 9, "Chest");
 	}
 	
 	public String toString()
